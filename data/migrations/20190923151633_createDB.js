@@ -20,7 +20,7 @@ exports.up = function(knex) {
       tbl.boolean("owner").notNullable();
 
       // created at and updated at
-      tbl.timestamps();
+      tbl.timestamps(true, true);
     })
     .createTable("ads", tbl => {
       // ad id
@@ -54,7 +54,7 @@ exports.up = function(knex) {
         .onDelete("CASCADE");
 
       // created at and updated at
-      tbl.timestamps();
+      tbl.timestamps(true, true);
     });
 };
 
