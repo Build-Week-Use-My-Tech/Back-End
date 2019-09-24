@@ -1,8 +1,11 @@
 var adsRouter = require("express").Router();
 var {getAds, getAd, postAd, updateAd, deleteUserAd} = require("../data/helpers/ads/ads-model.js");
 var {validateAd} = require("../middleware/validate.js");
+var authenticateUser = require("../data/helpers/auth/auth-middleware.js");
 
+adsRouter.use(authenticateUser);
 adsRouter.use(validateAd);
+
 adsRouter.route("/")
 .get(function rootAdsGETController(_, response){
   getAds()
