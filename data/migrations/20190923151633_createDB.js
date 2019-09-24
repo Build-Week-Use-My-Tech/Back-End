@@ -35,6 +35,8 @@ exports.up = function(knex) {
       // price
       tbl.decimal("price").notNullable();
 
+      tbl.string("img_url");
+
       // item condition
       tbl.string("item_condition", 60).notNullable();
 
