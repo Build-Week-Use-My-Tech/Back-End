@@ -48,3 +48,45 @@ return example:
 **Type of Request:** PUT
 
 _all fields of object will be required like when registering (excluding password), even if unchanged._
+
+## Get Ads By User
+
+`/api/users/id/ads`
+
+**Type of Request:** GET
+
+provide the user id in your request where url contains `id`.
+
+ex: `/api/users/3/ads` ... will request all ads for user with id of 3
+
+returns a list of ads created by that user
+
+## GET all Ads
+
+**Type of Request:** GET
+
+`/api/ads`
+
+## GET Ad by Ad ID
+
+**Type of Request:** GET
+
+`/api/ads/1`
+
+## POST Ad by USER ID
+
+**Type of Request:** POST
+
+`/api/ads/user/1` 
+
+## Update Ad by USER ID and Ad ID
+
+**Type of Request:** PUT
+
+`/api/ads/user/1/update/1`
+
+## Delete Ad by USER ID and Ad ID
+
+**Type of Request:** DELETE
+
+`/api/ads/user/1/delete/1`
