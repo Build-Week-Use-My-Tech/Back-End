@@ -27,7 +27,7 @@ exports.up = function(knex) {
       tbl.increments();
 
       // title
-      tbl.string("title", 200).notNullable();
+      tbl.string("title").notNullable();
 
       // description
       tbl.text("description").notNullable();

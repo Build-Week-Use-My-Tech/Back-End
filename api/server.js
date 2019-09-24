@@ -4,13 +4,13 @@ const express = require("express");
 const server = express();
 
 // routes
-const adsRoutes = require("../routes/adsRoutes.js");
+const adsRouter = require("../routes/adsRoutes.js");
 const authRoutes = require("../routes/authRoutes.js");
 const userRoutes = require("../routes/userRoutes.js");
 
 server.use(express.json());
 
-server.use("/api/ads", adsRoutes);
+server.use("/api/ads", adsRouter);
 server.use("/api/auth", authRoutes);
 server.use("/api/users", userRoutes);
 
