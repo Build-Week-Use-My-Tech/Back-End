@@ -1,6 +1,6 @@
 // validate registration body
 
-const validateRegister = (req, res, next) => {
+const validateUserBody = (req, res, next) => {
   const { first_name, last_name, email, password } = req.body;
 
   if (first_name && last_name && email && password) {
@@ -13,5 +13,5 @@ const validateRegister = (req, res, next) => {
 };
 
 module.exports = {
-  validateRegister
+  validateUserBody
 };
