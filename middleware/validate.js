@@ -3,7 +3,23 @@ const invalidBodyMsg = "Must provide valid data for all required fields"
 const validateRegister = (req, res, next) => {
   const { first_name, last_name, email, password } = req.body;
 
-  if (first_name && last_name && email && password) {
+
+const validateUserBody = (req, res, next) => {
+  const { first_name, last_name, email, password, renter, owner } = req.body;
+
+  if (first_name && last_name && email && password && renter && owner) {
+    next();
+  } else {
+    res
+      .status(400)
+      .json({ message: "Must provide valid data for all required fields" });
+  }
+};
+
+const validateUpdateBody = (req, res, next) => {
+  const { first_name, last_name, email, renter, owner } = req.body;
+
+  if (first_name && last_name && email && renter && owner) {
     next();
   } else {
     res
@@ -34,4 +50,6 @@ function validateAd({body:{title, description, price, item_condition, item_avail
 module.exports = {
   validateRegister,
   validateAd,
+  validateUserBody,
+  validateUpdateBody
 };
