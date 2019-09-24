@@ -18,8 +18,20 @@ const registerUser = newUser => {
     });
 };
 
+const returnUser = id => {
+  return findById(id).select(
+    "id",
+    "first_name",
+    "last_name",
+    "email",
+    "renter",
+    "owner"
+  );
+};
+
 module.exports = {
   find,
   findById,
-  registerUser
+  registerUser,
+  returnUser
 };
