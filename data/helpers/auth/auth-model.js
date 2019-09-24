@@ -4,6 +4,12 @@ const find = () => {
   return db("users");
 };
 
+const findByEmail = email => {
+  return db("users")
+    .where({ email })
+    .first();
+};
+
 const findById = id => {
   return db("users")
     .where({ id })
@@ -18,27 +24,9 @@ const registerUser = newUser => {
     });
 };
 
-const returnUser = id => {
-  return findById(id).select(
-    "id",
-    "first_name",
-    "last_name",
-    "email",
-    "renter",
-    "owner"
-  );
-};
-
-const updateUser = (id, changes) => {
-  return db("users")
-    .where({ id })
-    .update(changes);
-};
-
 module.exports = {
   find,
   findById,
   registerUser,
-  returnUser,
-  updateUser
+  findByEmail
 };
