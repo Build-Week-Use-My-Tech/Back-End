@@ -32,8 +32,7 @@ const returnUser = id => {
 const updateUser = (id, changes) => {
   return db("users")
     .where({ id })
-    .update(changes)
-    .first();
+    .update(changes);
 };
 
 module.exports = {
