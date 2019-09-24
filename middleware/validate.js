@@ -2,9 +2,9 @@
 const invalidBodyMsg = "Must provide valid data for all required fields";
 
 const validateUserBody = (req, res, next) => {
-  const { first_name, last_name, email, password, renter, owner } = req.body;
+  const { first_name, last_name, email, password } = req.body;
 
-  if (first_name && last_name && email && password && renter && owner) {
+  if (first_name && last_name && email && password) {
     next();
   } else {
     res.status(400).json({ message: invalidBodyMsg });
@@ -12,9 +12,9 @@ const validateUserBody = (req, res, next) => {
 };
 
 const validateUpdateBody = (req, res, next) => {
-  const { first_name, last_name, email, renter, owner } = req.body;
+  const { first_name, last_name, email } = req.body;
 
-  if (first_name && last_name && email && renter && owner) {
+  if (first_name && last_name && email) {
     next();
   } else {
     res.status(400).json({ message: invalidBodyMsg });
