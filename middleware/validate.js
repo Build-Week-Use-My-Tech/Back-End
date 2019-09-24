@@ -1,8 +1,5 @@
 // validate registration body
 const invalidBodyMsg = "Must provide valid data for all required fields"
-const validateRegister = (req, res, next) => {
-  const { first_name, last_name, email, password } = req.body;
-
 
 const validateUserBody = (req, res, next) => {
   const { first_name, last_name, email, password, renter, owner } = req.body;
@@ -12,7 +9,7 @@ const validateUserBody = (req, res, next) => {
   } else {
     res
       .status(400)
-      .json({ message: "Must provide valid data for all required fields" });
+      .json({ message: invalidBodyMsg });
   }
 };
 
