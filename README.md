@@ -6,7 +6,7 @@ API for Use My Tech Stuff
 
 ## Register
 
-`/api/auth/register`
+`https://tech-stuff.herokuapp.com/api/auth/register`
 
 **Type of Request:** POST
 
@@ -14,7 +14,7 @@ API for Use My Tech Stuff
 
 ## Login
 
-`/api/auth/login`
+`https://tech-stuff.herokuapp.com/api/auth/login`
 
 **Type of Request:** POST
 
@@ -24,7 +24,7 @@ returns `JSON Web Token`. This will need to be sent with all requests (except re
 
 ## Get Logged In User's Info
 
-`/api/users/`
+`https://tech-stuff.herokuapp.com/api/users/`
 
 **Type of Request:** GET
 
@@ -43,7 +43,7 @@ return example:
 
 ## Update User
 
-`api/users/id`
+`https://tech-stuff.herokuapp.com/api/users/id`
 
 **Type of Request:** PUT
 
@@ -51,13 +51,13 @@ _all fields of object will be required like when registering (excluding password
 
 ## Get Ads By User
 
-`/api/users/id/ads`
+`https://tech-stuff.herokuapp.com/api/users/id/ads`
 
 **Type of Request:** GET
 
 provide the user id in your request where url contains `id`.
 
-ex: `/api/users/3/ads` ... will request all ads for user with id of 3
+ex: `https://tech-stuff.herokuapp.com/api/users/3/ads` ... will request all ads for user with id of 3
 
 returns a list of ads created by that user
 
@@ -65,28 +65,28 @@ returns a list of ads created by that user
 
 **Type of Request:** GET
 
-`/api/ads`
+`https://tech-stuff.herokuapp.com/api/ads`
 
 ## GET Ad by Ad ID
 
 **Type of Request:** GET
 
-`/api/ads/1`
+`https://tech-stuff.herokuapp.com/api/ads/1`
 
 ## POST Ad by USER ID
 
 **Type of Request:** POST
 
-`/api/ads/user/1` 
+`https://tech-stuff.herokuapp.com/api/ads/user/1`
 
 ## Update Ad by USER ID and Ad ID
 
 **Type of Request:** PUT
 
-`/api/ads/user/1/update/1`
+`https://tech-stuff.herokuapp.com/api/ads/user/1/update/1`
 
 ## Delete Ad by USER ID and Ad ID
 
 **Type of Request:** DELETE
 
-`/api/ads/user/1/delete/1`
+`https://tech-stuff.herokuapp.com/api/ads/user/1/delete/1`
