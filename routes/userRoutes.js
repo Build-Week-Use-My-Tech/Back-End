@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-// // middleware
+// middleware
 const validate = require("../middleware/validate.js");
 const authenticate = require("../data/helpers/auth/auth-middleware.js");
 
@@ -29,5 +29,32 @@ router.get("/:id", authenticate, async (req, res) => {
     });
   }
 });
+
+router.put(
+  "/:id",
+  authenticate,
+  validate.validateUpdateBody,
+  async (req, res) => {
+    const { id } = req.params;
+    const { email, body } = req;
+    console.log("req", req);
+    console.log("USER EMAIL", email);
+    try {
+      const user = await Users.updateUser(id, body);
+      console.log("USER EMAIL 2", user.email);
+
+      if (user) {
+        res.status(200).json({ message: "User information updated" });
+      } else {
+        res.status(401).json({ message: "Invaid credentials" });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Server encountered error trying to fetch user information"
+      });
+    }
+  }
+);
 
 module.exports = router;
