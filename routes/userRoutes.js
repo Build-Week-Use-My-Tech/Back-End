@@ -30,6 +30,24 @@ router.get("/", authenticate, async (req, res) => {
   }
 });
 
+router.get("/:id/ads", authenticate, async (req, res) => {
+  const { id } = req.params;
+  try {
+    const results = await Users.adsByUser(id);
+
+    if (results) {
+      res.status(200).json(results);
+    } else {
+      res.status(400).json({ message: "Invalid user" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Server encountered error trying to retrieve ads by user"
+    });
+  }
+});
+
 router.put(
   "/:id",
   authenticate,
