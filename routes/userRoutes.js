@@ -7,8 +7,8 @@ const authenticate = require("../data/helpers/auth/auth-middleware.js");
 // helpers
 const Users = require("../data/helpers/users/users-model.js");
 
-router.get("/:id", authenticate, async (req, res) => {
-  const { id } = req.params;
+router.get("/", authenticate, async (req, res) => {
+  const { id } = req;
   const { email } = req;
   console.log("req", req);
   console.log("USER EMAIL", email);
@@ -26,6 +26,24 @@ router.get("/:id", authenticate, async (req, res) => {
     console.log(err);
     res.status(500).json({
       message: "Server encountered error trying to fetch user information"
+    });
+  }
+});
+
+router.get("/:id/ads", authenticate, async (req, res) => {
+  const { id } = req.params;
+  try {
+    const results = await Users.adsByUser(id);
+
+    if (results) {
+      res.status(200).json(results);
+    } else {
+      res.status(400).json({ message: "Invalid user" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Server encountered error trying to retrieve ads by user"
     });
   }
 });

@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
         res.status(401).json({ message: "You are not authorized" });
       } else {
         // token is goooood
+        req.id = decodedToken.id;
         req.email = decodedToken.email;
         next();
       }

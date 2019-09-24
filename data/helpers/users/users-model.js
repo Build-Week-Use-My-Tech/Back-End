@@ -35,10 +35,25 @@ const updateUser = (id, changes) => {
     .update(changes);
 };
 
+const adsByUser = id => {
+  return db("ads")
+    .join("users", "users.id", "=", "ads.user_id")
+    .where({ "users.id": id })
+    .select(
+      "ads.id",
+      "ads.title",
+      "ads.description",
+      "ads.img_url",
+      "ads.item_condition",
+      "ads.negotiable"
+    );
+};
+
 module.exports = {
   find,
   findById,
   registerUser,
   returnUser,
-  updateUser
+  updateUser,
+  adsByUser
 };
