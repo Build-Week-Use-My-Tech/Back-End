@@ -29,9 +29,17 @@ const returnUser = id => {
   );
 };
 
+const updateUser = (id, changes) => {
+  return db("users")
+    .where({ id })
+    .update(changes)
+    .first();
+};
+
 module.exports = {
   find,
   findById,
   registerUser,
-  returnUser
+  returnUser,
+  updateUser
 };
