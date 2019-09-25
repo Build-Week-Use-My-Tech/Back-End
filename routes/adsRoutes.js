@@ -43,7 +43,7 @@ adsRouter
     postAd(user_id, ad)
       .then(function handlePostAd(result) {
         if (result) {
-          response.status(201).json({ result });
+          response.status(201).json(result);
         } else {
           throw new Error("oops there seems to be no user with that id here!");
         }
