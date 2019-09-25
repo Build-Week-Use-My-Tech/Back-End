@@ -20,7 +20,14 @@ const registerUser = newUser => {
   return db("users")
     .insert(newUser, "id")
     .then(([id]) => {
-      return findById(id);
+      return findById(id).select(
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "renter",
+        "owner"
+      );
     });
 };
 
