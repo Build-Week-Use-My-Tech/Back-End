@@ -13,7 +13,13 @@ module.exports = {
       .first()
       .then(function validateUserId(result) {
         if (result) {
-          return query("ads").insert({ ...ad, user_id });
+          return query("ads")
+            .insert({ ...ad, user_id }, "id")
+            .then(([id]) => {
+              return query("ads")
+                .where({ id })
+                .first();
+            });
         } else {
           return undefined;
         }
