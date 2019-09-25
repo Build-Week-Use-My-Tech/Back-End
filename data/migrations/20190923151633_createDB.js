@@ -13,7 +13,7 @@ exports.up = function(knex) {
         .notNullable()
         .unique();
       // password
-      tbl.string("password", 30).notNullable();
+      tbl.string("password", 256).notNullable();
       // is a renter?
       tbl.boolean("renter").notNullable();
       // is a owner?
