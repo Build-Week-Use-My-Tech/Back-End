@@ -10,7 +10,7 @@ var { validateAd } = require("../middleware/validate.js");
 var authenticateUser = require("../data/helpers/auth/auth-middleware.js");
 
 adsRouter.use(authenticateUser);
-adsRouter.use(validateAd);
+// adsRouter.use(validateAd);
 
 adsRouter.route("/").get(function rootAdsGETController(_, response) {
   getAds().then(function handleGetAds(result) {
@@ -36,6 +36,7 @@ adsRouter
 
 adsRouter
   .route("/user/:user_id")
+  .all(validateAd)
   .post(function userAdsPOSTController(request, response) {
     var user_id = request.params.user_id;
     var ad = { ...request.body, user_id };
@@ -56,6 +57,7 @@ adsRouter
 
 adsRouter
   .route("/user/:user_id/update/:ad_id")
+  .all(validateAd)
   .put(function userAdsPUTController(request, response) {
     var user_id = request.params.user_id;
     var ad_id = request.params.ad_id;
