@@ -49,21 +49,22 @@ module.exports = {
   deleteUserAd(user_id, ad_id) {
     return query("users")
       .where("id", user_id)
+      .first()
       .then(function validateUserId(result) {
-        if (result.length > 0) {
-          return query("ads")
-            .where("id", ad_id)
+        if (result) {
+          return getAd(ad_id)
+            .first()
             .then(function validateAdId(result) {
-              if (result.length > 0) {
+              if (result) {
                 return query("ads")
                   .del()
                   .where("id", ad_id);
               } else {
-                return ["ad has already been deleted"];
+                return ["Ad doesn't exist"];
               }
             });
         } else {
-          return ["Invalid user id"];
+          return ["User doesn't exist"];
         }
       });
   }
