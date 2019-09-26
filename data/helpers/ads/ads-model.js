@@ -28,12 +28,14 @@ module.exports = {
   updateAd(user_id, ad_id, change) {
     return query("users")
       .where("id", user_id)
+      .first()
       .then(function validateUserId(result) {
-        if (result.length > 0) {
+        if (result) {
           return query("ads")
             .where("id", ad_id)
+            .first()
             .then(function validateAdId(result) {
-              if (result.length > 0) {
+              if (result) {
                 return query("ads")
                   .update(change)
                   .where("id", ad_id);

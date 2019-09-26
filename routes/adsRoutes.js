@@ -65,7 +65,7 @@ adsRouter
     updateAd(user_id, ad_id, change)
       .then(function handlePutAd(result) {
         console.log(result);
-        if (typeof result == "object") {
+        if (Array.isArray(result)) {
           throw new Error(result[0]);
         } else {
           response.status(200).json({ message: "OK updated" });
