@@ -46,6 +46,7 @@ const adsByUser = id => {
       "ads.price",
       "ads.img_url",
       "ads.item_condition",
+      "ads.item_available",
       "ads.negotiable",
       "ads.user_id"
     );
