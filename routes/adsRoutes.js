@@ -36,7 +36,8 @@ adsRouter
 
 adsRouter
   .route("/user/:user_id")
-  .post(validateAd, function userAdsPOSTController(request, response) {
+  .all(validateAd)
+  .post(function userAdsPOSTController(request, response) {
     var user_id = request.params.user_id;
     var ad = { ...request.body, user_id };
 
@@ -56,7 +57,8 @@ adsRouter
 
 adsRouter
   .route("/user/:user_id/update/:ad_id")
-  .put(validateAd, function userAdsPUTController(request, response) {
+  .all(validateAd)
+  .put(function userAdsPUTController(request, response) {
     var user_id = request.params.user_id;
     var ad_id = request.params.ad_id;
     var change = { ...request.body, user_id };
