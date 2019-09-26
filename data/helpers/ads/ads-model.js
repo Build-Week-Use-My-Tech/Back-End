@@ -52,7 +52,8 @@ module.exports = {
       .first()
       .then(function validateUserId(result) {
         if (result) {
-          return getAd(ad_id)
+          return query("ads")
+            .where("id", ad_id)
             .first()
             .then(function validateAdId(result) {
               if (result) {
