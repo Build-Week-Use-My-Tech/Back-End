@@ -81,7 +81,7 @@ adsRouter
     var ad_id = request.params.ad_id;
     deleteUserAd(user_id, ad_id)
       .then(function handleDeleteUserAd(result) {
-        if (typeof result == "object") {
+        if (Array.isArray(result)) {
           throw new Error(result[0]);
         } else {
           response.status(200).json({ message: "OK deleted." });
